@@ -1,0 +1,30 @@
+
+
+ command used for querying balance from the terminal, slightly changed from her version, and that command is:
+
+dfx canister call token_backend balanceOf "( $OWNER_PUBLIC_KEY )"
+
+STEPS that folow:
+
+Any import 
+
+import { token_backend as token } from '../../../declarations/token_backend';
+
+I used the "as token" clause, so that it should be easy to use the word "token" 
+
+checking canister id:
+
+dfx canister id token_backend
+
+
+
+Save canister ID into a command line variable as follows:
+
+CANISTER_PUBLIC_KEY="principal \"$( \dfx canister id token_backend )\""
+
+
+
+Transfer half a billion tokens to the canister Principal ID as follows:
+
+dfx canister call token_backend transfer "($CANISTER_PUBLIC_KEY, 500_000_000)"
+
